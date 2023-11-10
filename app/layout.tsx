@@ -19,14 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="px-[20vw] lg:px-[10vw]">
-          <div className="py-6 text-center">
+        <div className="px-[20vw] py-12 lg:px-[10vw]">
+          <div className="text-center">
             <Link href="/">
-              <h1 className={`${mySoul.className} text-4xl`}>
+              <h1 className={`${mySoul.className} text-5xl`}>
                 The New York Tymes
               </h1>
             </Link>
-            <p className="text-lg">the most original publisher in town</p>
+            <p className="text-xl">the most original publisher in town</p>
           </div>
           {children}
         </div>
