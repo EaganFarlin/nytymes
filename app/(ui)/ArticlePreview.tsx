@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 
 import { Montserrat } from "next/font/google";
 
@@ -13,22 +14,30 @@ export default function ArticlePreview({
   index: number;
   name: string;
   description: string;
-  coveruri: string;
+  coveruri: string | null | number;
 }) {
   return (
-    <div className="max-w-xs w-[calc(100vw/3)] border-2 border-slate-50">
-      <h3 className={`${montserrat.className} text-xl font-bold`}>
-        Lorem ipsum
-      </h3>
+    <div
+      className={clsx(
+        { "w-full max-w-[60rem]": index === 0 },
+        { "w-full lg:max-w-xs lg:w-[30vw] lg:mr-4": index > 0 }
+      )}
+    >
+      <Link href="/">
+        <h3 className={`${montserrat.className} text-xl font-bold`}>{name}</h3>
+      </Link>
       <img
-        src=""
+        src={coveruri?.toString()}
         alt=""
-        className={clsx("h-40 bg-slate-500", { "bg-blue-500": index === 0 })}
+        className={clsx(
+          "w-full h-[calc(12.5vw+25vh)] lg:min-h-[10rem]",
+          { "lg:h-[10vw]": index > 0 },
+          {
+            "bg-gray-500": true,
+          }
+        )}
       />
-      <p className="text-base">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <p className="text-base">{description}</p>
     </div>
   );
 }

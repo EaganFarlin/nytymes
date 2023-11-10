@@ -3,17 +3,61 @@ import { randomUUID } from "crypto";
 const fs = require("fs");
 // Articles Database
 
-const articles = `{
-  "Articles": [
+const articles = {
+  Articles: [
     {
-      "id": ${randomUUID},
-      "name": "Lorem Ipsum",
-      "description":
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      coveuri: 0,
+    },
+    {
+      id: randomUUID(),
+      name: "Lorem Ipsum",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      coveuri: 0,
     },
   ],
-}`;
+};
 
-const myObj = JSON.parse(articles);
+let myObj = JSON.stringify(articles);
+myObj = JSON.parse(myObj);
 
 export default myObj;
