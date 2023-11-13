@@ -24,7 +24,7 @@ export default function ArticlePreview({
         { "w-full lg:max-w-xs lg:w-[30vw] lg:mr-4": index > 0 }
       )}
     >
-      <Link href={`/post/${name}-${index}`}>
+      <Link href={`/post/${name}-${index}`.replace(/\s/g, "-")}>
         <h3 className={`${montserrat.className} text-xl font-bold`}>{name}</h3>
       </Link>
       <p className="text-lg text-gray-700">{description}</p>
