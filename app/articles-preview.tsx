@@ -8,7 +8,13 @@ function ArticlePreview({
   article,
 }: {
   index: number;
-  article: { id: string; name: string; description: string; coveruri: string };
+  article: {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    coveruri: string;
+  };
 }) {
   return (
     <div className="flex justify-center w-full">
@@ -18,7 +24,12 @@ function ArticlePreview({
           { "max-w-[40rem]": index > 0 }
         )}
       >
-        <Link href={`/post/${article.id}`.replace(/\s/g, "-")}>
+        <Link
+          href={`/post/${article.category.toLowerCase()}/${article.id}`.replace(
+            /\s/g,
+            "-"
+          )}
+        >
           <h3 className="text-xl font-bold">{article.name}</h3>
         </Link>
         <p className="text-lg text-gray-700">{article.description}</p>

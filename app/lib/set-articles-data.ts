@@ -4,59 +4,26 @@ import { randomUUID } from "crypto";
 
 const fs = require("fs");
 
-const articles = {
-  Articles: [
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      coveuri: 0,
-    },
-    {
-      id: randomUUID(),
-      name: "Lorem Ipsum",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      coveuri: 0,
-    },
-  ],
+const articles: {
+  Articles: [];
+} = {
+  Articles: [],
 };
+
+const exampleArticle = () => {
+  return {
+    id: randomUUID(),
+    name: "Lorem Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua.",
+    category: Math.random() >= 0.5 ? "Cats" : "Dogs",
+    coveuri: undefined,
+  };
+};
+
+for (let i = 0; i < 10; i++) {
+  articles.Articles.push(exampleArticle());
+}
 
 export default async function setArticlesData() {
   fs.writeFileSync(
