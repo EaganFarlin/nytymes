@@ -12,7 +12,10 @@ const articles: {
 
 async function exampleArticle() {
   const category = Math.random() >= 0.5 ? "cats" : "dogs";
-  const coverUri = await fetchRandomDogImage();
+  const coverUri =
+    category === "cats"
+      ? await fetchRandomCatImage()
+      : await fetchRandomDogImage();
   return {
     id: randomUUID(),
     category: category,
@@ -33,6 +36,15 @@ async function fetchRandomDogImage() {
   );
   const data = await response.json();
   return data.url;
+}
+
+async function fetchRandomCatImage() {
+  const timestamp = new Date().getTime();
+  const response = await fetch(
+    `https://api.thecatapi.com/v1/images/search?timestamp=${timestamp}`
+  );
+  const data = await response.json();
+  return data[0].url;
 }
 
 export default async function setArticlesData() {
