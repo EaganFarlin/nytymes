@@ -16,7 +16,7 @@ function ArticlePreview({
 }) {
   return (
     <div className="flex justify-center w-full">
-      <div className={clsx({ "w-1/2": index === 0 })}>
+      <div className={clsx({ "md:w-1/2": index === 0 })}>
         <Link
           href={`/posts/${article.category}/${article.id}`.replace(/\s/g, "-")}
         >
