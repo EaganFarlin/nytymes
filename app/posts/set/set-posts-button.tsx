@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
 import setArticlesData from "@/app/lib/set-articles-data";
 
 export default function SetPostsButton() {
