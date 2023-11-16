@@ -4,13 +4,24 @@ import { randomUUID } from "crypto";
 
 const fs = require("fs");
 
-const articles: {
-  Articles: [];
-} = {
+interface Article {
+  id: string;
+  category: string;
+  coverUri: string;
+  name: string;
+  description: string;
+  text: string;
+}
+
+interface ArticlesObject {
+  Articles: Article[];
+}
+
+const articles: ArticlesObject = {
   Articles: [],
 };
 
-async function exampleArticle() {
+async function exampleArticle(): Promise<Article> {
   const category = Math.random() >= 0.5 ? "cats" : "dogs";
   const coverUri =
     category === "cats"
