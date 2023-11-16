@@ -44,7 +44,7 @@ export default async function Page({ params }: Props) {
                 Posts
               </Link>{" "}
               {">"}{" "}
-              <Link href={`/posts/${category}`} className="text-gray-500">
+              <Link href={`/posts/${category}`} className="text-gray-950">
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </Link>
             </div>
