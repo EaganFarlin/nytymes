@@ -1,5 +1,3 @@
-"use server";
-
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { fetchCategoryArticles } from "@/app/lib/articles-data";
