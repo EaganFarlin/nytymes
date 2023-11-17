@@ -1,8 +1,9 @@
-"use server";
-
 import { promises as fs } from "fs";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCategoryArticles(category: string) {
+  noStore();
+
   try {
     const categoryArticles = (await fetchArticles()).Articles.filter(
       (article: { category: string }) => {
@@ -18,6 +19,8 @@ export async function fetchCategoryArticles(category: string) {
 }
 
 export async function fetchArticles() {
+  noStore();
+
   try {
     const articlesJSONFile = await fs.readFile(
       process.cwd() + "/app/lib/articles.json",
@@ -37,6 +40,8 @@ export async function fetchArticleByCategoryAndId(
   category: string,
   id: string
 ) {
+  noStore();
+
   try {
     const articles = (await fetchArticles()).Articles;
     const article = articles.find(
