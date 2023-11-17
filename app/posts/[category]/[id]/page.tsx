@@ -1,3 +1,5 @@
+"use server";
+
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

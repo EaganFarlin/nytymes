@@ -1,6 +1,7 @@
+"use server";
+
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { fetchCategoryArticles } from "@/app/lib/articles-data";
 import ArticlesPreview from "@/app/articles-preview";
 import type { Metadata, ResolvingMetadata } from "next";
