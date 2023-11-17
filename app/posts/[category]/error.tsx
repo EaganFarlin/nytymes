@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 
-export default function Error() {
+export default function Error({ error }, { error: any }) {
   return (
     <div className="flex justify-center flex-col text-center">
-      <p className="mb-2 text-3xl">ERROR</p>
+      <p className="mb-2 text-3xl">ERROR:</p>
+      <p>{error.message}</p>
       <Link
         href="/"
         className="text-xl border-2 border-gray-500 p-2 rounded-lg"
