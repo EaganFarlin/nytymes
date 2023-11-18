@@ -16,9 +16,7 @@ export async function fetchCategoryArticles(category: string) {
   }
 }
 
-export async function fetchArticles() {
-  noStore();
-
+async function fetchArticles() {
   try {
     const articlesJSONFile = await fs.readFile(
       process.cwd() + "/app/lib/articles.json",
