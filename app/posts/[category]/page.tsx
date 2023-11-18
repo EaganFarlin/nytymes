@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { fetchCategoryArticles } from "@/app/lib/articles-data";
+import { fetchArticles, fetchCategoryArticles } from "@/app/lib/articles-data";
 import ArticlesPreview from "@/app/articles-preview";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -21,7 +21,8 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const category = params.category;
-  const catergoryArticles = await fetchCategoryArticles(category);
+  // const catergoryArticles = await fetchCategoryArticles(category);
+  const catergoryArticles = await fetchArticles();
 
   if (!catergoryArticles) {
     notFound();
@@ -30,7 +31,10 @@ export default async function Page({ params }: Props) {
   return (
     <div>
       <Suspense fallback={<div>TEST</div>}>
-        <ArticlesPreview articles={catergoryArticles} ishomepage={false} />
+        <ArticlesPreview
+          articles={catergoryArticles.Articles}
+          ishomepage={false}
+        />
       </Suspense>
     </div>
   );
