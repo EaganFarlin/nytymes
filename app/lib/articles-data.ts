@@ -3,7 +3,14 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCategoryArticles(category: string) {
   try {
-    const categoryArticles = (await fetchArticles()).Articles.filter(
+    const articlesJSONFile = await fs.readFile(
+      process.cwd() + "/app/lib/articles.json",
+      "utf8"
+    );
+
+    const articles = JSON.parse(articlesJSONFile);
+
+    const categoryArticles = articles.Articles.filter(
       (article: { category: string }) => {
         return article.category === category;
       }
@@ -16,7 +23,7 @@ export async function fetchCategoryArticles(category: string) {
   }
 }
 
-async function fetchArticles() {
+export async function fetchArticles() {
   try {
     const articlesJSONFile = await fs.readFile(
       process.cwd() + "/app/lib/articles.json",
@@ -37,7 +44,13 @@ export async function fetchArticleByCategoryAndId(
   id: string
 ) {
   try {
-    const articles = (await fetchArticles()).Articles;
+    const articlesJSONFile = await fs.readFile(
+      process.cwd() + "/app/lib/articles.json",
+      "utf8"
+    );
+
+    const articles = JSON.parse(articlesJSONFile);
+
     const article = articles.find(
       (article: { id: string; category: string }) => {
         return article.id === id && article.category === category;
