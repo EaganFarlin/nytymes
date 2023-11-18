@@ -3,6 +3,8 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCategoryArticles(category: string) {
   try {
+    console.log(category);
+
     const articlesJSONFile = await fs.readFile(
       process.cwd() + "/app/lib/articles.json",
       "utf8"
