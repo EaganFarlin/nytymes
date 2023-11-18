@@ -20,6 +20,10 @@ export async function generateMetadata(
   const id = params.id;
   const article = await fetchArticleByCategoryAndId(category, id);
 
+  if (!article) {
+    notFound();
+  }
+
   return {
     title: article.name,
   };
