@@ -49,7 +49,7 @@ export async function fetchArticleByCategoryAndId(
       "utf8"
     );
 
-    const articles = JSON.parse(articlesJSONFile);
+    const articles = JSON.parse(articlesJSONFile).Articles;
 
     const article = articles.find(
       (article: { id: string; category: string }) => {
