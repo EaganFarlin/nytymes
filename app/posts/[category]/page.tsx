@@ -69,9 +69,9 @@ export default async function Home() {
 
   const articles = JSON.parse(articlesJSONFile);
 
-  if (!articles) {
-    notFound();
-  }
+  // if (!articles) {
+  //   notFound();
+  // }
 
   return (
     // <Suspense fallback={<ArticlesPreviewSkeleton />}>
