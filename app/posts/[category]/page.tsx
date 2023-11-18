@@ -59,8 +59,15 @@ import { ArticlesPreviewSkeleton } from "@/app/skeletons";
 import { fetchArticles } from "@/app/lib/articles-data";
 import { notFound } from "next/navigation";
 
+import { promises as fs } from "fs";
+
 export default async function Home() {
-  const articles = await fetchArticles();
+  const articlesJSONFile = await fs.readFile(
+    process.cwd() + "/app/lib/articles.json",
+    "utf8"
+  );
+
+  const articles = JSON.parse(articlesJSONFile);
 
   if (!articles) {
     notFound();
