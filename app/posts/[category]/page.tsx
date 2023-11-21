@@ -62,7 +62,10 @@ import { notFound } from "next/navigation";
 import { promises as fs } from "fs";
 
 export default async function Home() {
-  const articlesJSONFile = await fs.readFile("/app/lib/articles.json", "utf8");
+  const articlesJSONFile = await fs.readFile(
+    process.cwd() + "/app/lib/articles.json",
+    "utf8"
+  );
 
   console.log(process.cwd());
 
