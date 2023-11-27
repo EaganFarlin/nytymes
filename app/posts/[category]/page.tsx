@@ -1,84 +1,38 @@
-// import { Suspense } from "react";
-// import { notFound } from "next/navigation";
-// import { fetchArticles, fetchCategoryArticles } from "@/app/lib/articles-data";
-// import ArticlesPreview from "@/app/articles-preview";
-// // import type { Metadata, ResolvingMetadata } from "next";
-
-// // type Props = {
-// //   params: { category: string };
-// // };
-
-// // export async function generateMetadata(
-// //   { params }: Props,
-// //   parent: ResolvingMetadata
-// // ): Promise<Metadata> {
-// //   const category = params.category;
-
-// // if (!article) {
-// //   notFound();
-// // }
-
-// //   return {
-// //     title: category.charAt(0).toUpperCase() + category.slice(1),
-// //   };
-// // }
-
-// export default async function Page() {
-//   // { params }: Props
-//   // const category = params.category;
-//   // const catergoryArticles = await fetchCategoryArticles(category);
-//   // const catergoryArticles = await fetchArticles();
-
-//   // if (!catergoryArticles) {
-//   //   notFound();
-//   // }
-
-//   // return (
-//   //   <div>
-//   //     <Suspense fallback={<div>TEST</div>}>
-//   //       <ArticlesPreview
-//   //         articles={catergoryArticles.Articles}
-//   //         ishomepage={false}
-//   //       />
-//   //     </Suspense>
-//   //   </div>
-//   // );
-
-//   const articles = await fetchArticles();
-
-//   return (
-//     // <Suspense fallback={<ArticlesPreviewSkeleton />}>
-//     <ArticlesPreview articles={articles.Articles} ishomepage={true} />
-//     // </Suspense>
-//   );
-// }
-
 import { Suspense } from "react";
-import ArticlesPreview from "@/app/articles-preview";
-import { ArticlesPreviewSkeleton } from "@/app/skeletons";
-import { fetchArticles } from "@/app/lib/articles-data";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { fetchCategoryArticles } from "@/app/lib/articles-data";
+import ArticlesPreview from "@/app/articles-preview";
+import type { Metadata, ResolvingMetadata } from "next";
 
-import { promises as fs } from "fs";
-import path from "path";
+type Props = {
+  params: { category: string };
+};
 
-export default async function Home() {
-  const articlesJSONFile = await fs.readFile(
-    path.resolve("/app/lib/articles.json"),
-    "utf8"
-  );
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const category = params.category;
 
-  console.log(process.cwd());
+  return {
+    title: category.charAt(0).toUpperCase() + category.slice(1),
+  };
+}
 
-  const articles = JSON.parse(articlesJSONFile);
+export default async function Page({ params }: Props) {
+  const category = params.category;
+  const catergoryArticles = await fetchCategoryArticles(category);
 
-  // if (!articles) {
-  //   notFound();
-  // }
+  if (!catergoryArticles) {
+    notFound();
+  }
 
   return (
-    // <Suspense fallback={<ArticlesPreviewSkeleton />}>
-    <ArticlesPreview articles={articles.Articles} ishomepage={true} />
-    // </Suspense>
+    <div>
+      <Suspense fallback={<div>TEST</div>}>
+        <ArticlesPreview articles={catergoryArticles} ishomepage={false} />
+      </Suspense>
+    </div>
   );
 }
