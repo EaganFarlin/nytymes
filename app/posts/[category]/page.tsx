@@ -63,7 +63,7 @@ import { promises as fs } from "fs";
 
 export default async function Home() {
   const articlesJSONFile = await fs.readFile(
-    process.cwd() + "/app/lib/articles.json",
+    path.resolve() + "/app/lib/articles.json",
     "utf8"
   );
 
