@@ -3,6 +3,7 @@ import SetPostsButton from "@/app/posts/set/set-posts-button";
 import { notFound } from "next/navigation";
 
 import { promises as fs } from "fs";
+import path from "path";
 
 export default async function Page() {
   const articlesJSONFile = await fs.readFile(

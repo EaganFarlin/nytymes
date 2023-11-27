@@ -60,10 +60,11 @@ import { fetchArticles } from "@/app/lib/articles-data";
 import { notFound } from "next/navigation";
 
 import { promises as fs } from "fs";
+import path from "path";
 
 export default async function Home() {
   const articlesJSONFile = await fs.readFile(
-    path.resolve() + "/app/lib/articles.json",
+    path.resolve("/app/lib/articles.json"),
     "utf8"
   );
 

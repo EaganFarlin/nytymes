@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import { unstable_noStore as noStore } from "next/cache";
+import path from "path";
 
 export async function fetchCategoryArticles(category: string) {
   try {
