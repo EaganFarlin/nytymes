@@ -5,7 +5,7 @@ import path from "path";
 export async function fetchCategoryArticles(category: string) {
   try {
     const articlesJSONFile = await fs.readFile(
-      path.resolve() + "/app/lib/articles.json",
+      path.resolve("/app/lib/articles.json"),
       "utf8"
     );
 
@@ -27,7 +27,7 @@ export async function fetchCategoryArticles(category: string) {
 export async function fetchArticles() {
   try {
     const articlesJSONFile = await fs.readFile(
-      path.resolve() + "/app/lib/articles.json",
+      path.resolve("/app/lib/articles.json"),
       "utf8"
     );
 
@@ -46,7 +46,7 @@ export async function fetchArticleByCategoryAndId(
 ) {
   try {
     const articlesJSONFile = await fs.readFile(
-      path.resolve() + "/app/lib/articles.json",
+      path.resolve("/app/lib/articles.json"),
       "utf8"
     );
 

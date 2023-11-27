@@ -7,7 +7,7 @@ import path from "path";
 
 export default async function Page() {
   const articlesJSONFile = await fs.readFile(
-    path.resolve() + "/app/lib/articles.json",
+    path.resolve("/app/lib/articles.json"),
     "utf8"
   );
 
