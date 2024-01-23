@@ -53,7 +53,7 @@ export default async function Page({ params }: Props) {
             <p className="mb-4 text-xl text-gray-600">{article.description}</p>
             <div className="flex flex-col w-full">
               <Link
-                className="w-0 h-0 relative self-end top-4 right-14"
+                className="h-0 overflow-visible self-end relative top-4 right-4"
                 href={`/posts/${category}/${id}/cover-img`}
               >
                 <FontAwesomeIcon
