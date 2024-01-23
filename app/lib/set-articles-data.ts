@@ -31,7 +31,7 @@ async function exampleArticle(): Promise<Article> {
     id: randomUUID(),
     category: category,
     coverUri: coverUri,
-    name: `${category === "cats" ? "Kittie" : "Doggie"} Ipsum #${Math.floor(
+    name: `${category === "cats" ? "Cat" : "Dog"} Ipsum #${Math.floor(
       Math.random() * 101
     )}`,
     description:

@@ -60,10 +60,13 @@ export default async function Page({ params }: Props) {
                 alt="article-cover"
                 className="w-full h-[calc(25vw+20vh)] object-cover"
               />
-              <Link href={`/posts/${category}/${id}/cover-img`}>
+              <Link
+                className="relative self-end bottom-[calc(25vw+20vh-1rem)] right-4"
+                href={`/posts/${category}/${id}/cover-img`}
+              >
                 <FontAwesomeIcon
                   icon={faMaximize}
-                  className="relative bottom-[calc(25vw+20vh-1rem)] left-[calc(90vw-3rem)] md:left-[calc(60vw-4.75rem)] w-10 h-10 mr-1 bg-white"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-white"
                 />
               </Link>
             </div>

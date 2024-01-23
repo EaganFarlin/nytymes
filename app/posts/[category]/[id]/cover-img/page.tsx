@@ -3,26 +3,25 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinimize } from "@fortawesome/free-solid-svg-icons";
 import { fetchArticleByCategoryAndId } from "@/app/lib/articles-data";
-
-// import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
   params: { category: string; id: string };
   //   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// export async function generateMetadata(
-//   { params }: Props,
-//   parent: ResolvingMetadata
-// ): Promise<Metadata> {
-//   const category = params.category;
-//   const id = params.id;
-//   const article = await fetchArticleByCategoryAndId(category, id);
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const category = params.category;
+  const id = params.id;
+  const article = await fetchArticleByCategoryAndId(category, id);
 
-//   return {
-//     title: article.name,
-//   };
-// }
+  return {
+    title: `Cover Image - ${article.name}`,
+  };
+}
 
 export default async function Page({ params }: Props) {
   const category = params.category;
