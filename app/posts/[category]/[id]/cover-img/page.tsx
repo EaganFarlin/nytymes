@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchArticleByCategoryAndId } from "@/app/lib/articles-data";
 import type { Metadata, ResolvingMetadata } from "next";
-import CoverImgFullMinBtn from "../cover-img-full-min-btn";
+import CoverImgMaxMinBtn from "../cover-img-max-min-btn";
 
 type Props = {
   params: { category: string; id: string };
@@ -39,7 +39,7 @@ export default async function Page({ params }: Props) {
         alt={`cover-uri-for-${article.name.replace(/\s/g, "-")}`}
         className="w-full h-full object-contain"
       />
-      <CoverImgFullMinBtn isMin={true} category={category} id={id} />
+      <CoverImgMaxMinBtn isMin={true} category={category} id={id} />
     </div>
   );
 }

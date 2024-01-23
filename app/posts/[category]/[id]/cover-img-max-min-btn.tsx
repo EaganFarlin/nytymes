@@ -4,9 +4,10 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinimize } from "@fortawesome/free-solid-svg-icons";
 import { faMaximize } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/app/posts/[category]/[id]/cover-img-full-min-button.module.css";
+import styles from "@/app/posts/[category]/[id]/cover-img-max-min-button.module.css";
+import clsx from "clsx";
 
-export default function CoverImgFullMinBtn({
+export default function CoverImgMaxMinBtn({
   isMin,
   category,
   id,
@@ -17,12 +18,16 @@ export default function CoverImgFullMinBtn({
 }) {
   return (
     <Link
-      className="h-0 overflow-visible self-end relative top-4 right-4"
-      href={`/posts/${category}/${id}/cover-img`}
+      className={clsx(
+        "h-0 overflow-visible self-end top-4 right-4",
+        isMin && "absolute",
+        !isMin && "relative"
+      )}
+      href={`/posts/${category}/${id}${!isMin ? "/cover-img" : ""}`}
     >
       <FontAwesomeIcon
         icon={isMin ? faMinimize : faMaximize}
-        className={`${styles.faCoverImgExpand} bg-white`}
+        className={styles.faCoverImgExpand}
       />
     </Link>
   );

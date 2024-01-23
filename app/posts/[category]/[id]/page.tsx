@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { fetchArticleByCategoryAndId } from "@/app/lib/articles-data";
 
 import type { Metadata, ResolvingMetadata } from "next";
-import CoverImgFullMinBtn from "./cover-img-full-min-btn";
+import CoverImgMaxMinBtn from "./cover-img-max-min-btn";
 
 type Props = {
   params: { category: string; id: string };
@@ -51,7 +51,7 @@ export default async function Page({ params }: Props) {
             <h1 className="text-3xl">{article.name}</h1>
             <p className="mb-4 text-xl text-gray-600">{article.description}</p>
             <div className="flex flex-col w-full">
-              <CoverImgFullMinBtn isMin={true} category={category} id={id} />
+              <CoverImgMaxMinBtn isMin={false} category={category} id={id} />
               <img
                 src={article.coverUri}
                 alt="article-cover"
