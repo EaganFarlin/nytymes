@@ -58,7 +58,7 @@ export default async function Page({ params }: Props) {
               >
                 <FontAwesomeIcon
                   icon={faMaximize}
-                  className="w-10 h-10 bg-white"
+                  className="w-[2.5rem] h-[2.5rem] bg-white"
                 />
               </Link>
               <img
