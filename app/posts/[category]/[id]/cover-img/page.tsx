@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinimize } from "@fortawesome/free-solid-svg-icons";
 import { fetchArticleByCategoryAndId } from "@/app/lib/articles-data";
 import type { Metadata, ResolvingMetadata } from "next";
+import CoverImgFullMinBtn from "../cover-img-full-min-btn";
 
 type Props = {
   params: { category: string; id: string };
@@ -39,12 +39,7 @@ export default async function Page({ params }: Props) {
         alt={`cover-uri-for-${article.name.replace(/\s/g, "-")}`}
         className="w-full h-full object-contain"
       />
-      <Link href={`/posts/${category}/${id}`}>
-        <FontAwesomeIcon
-          icon={faMinimize}
-          className="absolute top-5 right-5 w-10 h-10 mr-1 bg-white"
-        />
-      </Link>
+      <CoverImgFullMinBtn isMin={true} category={category} id={id} />
     </div>
   );
 }

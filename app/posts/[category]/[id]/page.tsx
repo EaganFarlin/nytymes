@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 import { fetchArticleByCategoryAndId } from "@/app/lib/articles-data";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import CoverImgFullMinBtn from "./cover-img-full-min-btn";
 
 type Props = {
   params: { category: string; id: string };
@@ -52,15 +51,7 @@ export default async function Page({ params }: Props) {
             <h1 className="text-3xl">{article.name}</h1>
             <p className="mb-4 text-xl text-gray-600">{article.description}</p>
             <div className="flex flex-col w-full">
-              <Link
-                className="h-0 overflow-visible self-end relative top-4 right-4"
-                href={`/posts/${category}/${id}/cover-img`}
-              >
-                <FontAwesomeIcon
-                  icon={faMaximize}
-                  className="w-[2.5rem] h-[2.5rem] bg-white"
-                />
-              </Link>
+              <CoverImgFullMinBtn isMin={true} category={category} id={id} />
               <img
                 src={article.coverUri}
                 alt="article-cover"
